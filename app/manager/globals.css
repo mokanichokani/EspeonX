@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 3% 6%;
+    --foreground: 0 0% 98%;
+    --card: 180 3% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 180 3% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 70% 50%;
+    --primary-foreground: 180 3% 6%;
+    --secondary: 180 3% 12%;
+    --secondary-foreground: 142 70% 50%;
+    --muted: 180 3% 12%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 142 70% 50%;
+    --accent-foreground: 180 3% 6%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 3% 12%;
+    --input: 180 3% 12%;
+    --ring: 142 70% 50%;
+    --chart-1: 142 70% 50%;
+    --chart-2: 142 70% 40%;
+    --chart-3: 142 70% 30%;
+    --chart-4: 142 70% 20%;
+    --chart-5: 142 70% 10%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 50% 50%, hsl(142, 70%, 50%, 0.15) 0%, transparent 100%),
+                     linear-gradient(to bottom right, hsl(142, 70%, 50%, 0.1) 0%, transparent 100%);
+    background-attachment: fixed;
+  }
+
+  /* Custom Gaming UI Elements */
+  .gaming-border {
+    @apply border border-primary/20 bg-gradient-to-r from-primary/10 to-transparent;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+  }
+
+  .gaming-card {
+    @apply relative overflow-hidden rounded-lg;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(180, 3%, 10%) 100%);
+    border: 1px solid hsl(var(--primary) / 0.2);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.1);
+  }
+
+  .gaming-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+  }
+
+  .gaming-button {
+    @apply relative overflow-hidden bg-primary/10 hover:bg-primary/20 text-primary 
+           border border-primary/30 hover:border-primary/50 transition-all duration-300;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+  }
+
+  .gaming-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: hsl(var(--primary));
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.3s;
+  }
+
+  .gaming-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.1;
+  }
+}
